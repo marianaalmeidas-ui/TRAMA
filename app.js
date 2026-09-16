@@ -7,14 +7,87 @@ const professionals=[
 ];
 function header(){return `<header class="topbar"><div class="container nav"><a class="logo" href="#/"><span class="logo-mark"></span><span class="brand-word">TRAMA<small class="brand-sub">BELEZA QUE CONECTA</small></span></a><nav class="navlinks"><a href="#/buscar">Buscar trancistas</a><a href="#/como-funciona">Como funciona</a><a href="#/trancistas">Para trancistas</a><a href="#/conteudos">Conteúdos</a></nav><div class="navactions"><button class="btn btn-outline" onclick="toast('Login demonstrativo')">Entrar</button><a class="btn btn-primary" href="#/cadastro">Criar conta</a></div></div></header>`}
 function home(){
-const w=100/1536,h=100/1024;
 const hs=[
-[7,2,17,5,"#/buscar"],[31,2,11,5,"#/como-funciona"],[49,2,9,5,"#/trancistas"],[59,2,8,5,"#/conteudos"],
-[79,2,5,5,"javascript:toast('Login demonstrativo')"],[85,2,9,5,"#/cadastro"],
-[7,41,24,7,"#/buscar"],[29,41,15,7,"#/buscar"],[45,41,9,7,"#/buscar"],[72,51,14,6,"javascript:toast('Busca por imagem: funcionalidade demonstrativa')"],
-[8,73,17,19,"#/buscar"],[28,73,17,19,"#/buscar"],[51,73,17,19,"#/buscar"],[72,73,18,19,"#/buscar"]
+[31,2,11,5,"#/como-funciona"],
+[49,2,9,5,"#/trancistas"],
+[59,2,8,5,"#/conteudos"],
+[79,2,5,5,"javascript:toast('Login demonstrativo')"],
+[85,2,9,5,"#/cadastro"],
+[8,73,17,19,"#/buscar"],
+[28,73,17,19,"#/buscar"],
+[51,73,17,19,"#/buscar"],
+[72,73,18,19,"#/buscar"]
 ];
-return `<main class="exact-home"><div class="home-canvas"><img src="approved-home.png" alt="Home aprovada da plataforma TRAMA">${hs.map(([x,y,w1,h1,target])=>`<a class="hotspot" style="left:${x}%;top:${y}%;width:${w1}%;height:${h1}%" href="${target.startsWith('javascript:')?'#':target}" onclick="${target.startsWith('javascript:')?target.slice(11):''}"></a>`).join("")}</div><div class="home-note">Protótipo navegável — esta Home reproduz exatamente a referência visual aprovada. Os pontos interativos levam às telas funcionais do protótipo.</div></main>`}
+
+return `
+<main class="exact-home">
+  <div class="home-canvas">
+
+    <img src="approved-home.png" alt="Home aprovada da plataforma TRAMA">
+
+    ${hs.map(([x,y,w,h,target]) =>
+      `<a
+        class="hotspot"
+        style="left:${x}%;top:${y}%;width:${w}%;height:${h}%"
+        href="${target.startsWith('javascript:')?'#':target}"
+        onclick="${target.startsWith('javascript:')?target.slice(11):''}">
+      </a>`
+    ).join("")}
+
+    <form
+      class="home-search"
+      onsubmit="event.preventDefault(); buscarHome();">
+
+      <div class="home-search-field technique-field">
+        <span class="search-icon">⌕</span>
+        <div>
+          <label for="home-technique">Qual técnica você procura?</label>
+          <input
+            id="home-technique"
+            type="text"
+            placeholder="Ex: Box Braids, Knotless, Nagô..."
+            autocomplete="off">
+        </div>
+      </div>
+
+      <div class="home-search-field location-field">
+        <span class="location-icon">⌖</span>
+        <div>
+          <label for="home-location">Onde?</label>
+          <input
+            id="home-location"
+            type="text"
+            placeholder="Rio de Janeiro, bairro ou região"
+            autocomplete="off">
+        </div>
+      </div>
+
+      <button type="submit" class="home-search-button">
+        Buscar
+      </button>
+
+    </form>
+
+  </div>
+
+  <div class="home-note">
+    Protótipo navegável — esta Home reproduz exatamente a referência visual aprovada.
+    Os pontos interativos levam às telas funcionais do protótipo.
+  </div>
+</main>`;
+}
+
+function buscarHome(){
+  const technique = document.getElementById("home-technique").value.trim();
+  const location = document.getElementById("home-location").value.trim();
+
+  const params = new URLSearchParams();
+
+  if(technique) params.set("tecnica", technique);
+  if(location) params.set("local", location);
+
+  location.hash = "/buscar" + (params.toString() ? "?" + params.toString() : "");
+}
 function proCard(p){return `<article class="panel"><div style="height:160px;border-radius:12px;background:linear-gradient(135deg,#6b351e,#d47c3d);margin:-2px -2px 14px"></div><h3>${p.name} <span class="verified">●</span></h3><div class="muted">${p.place}</div><b>★ ${p.rating}</b> <span class="muted">(${p.reviews})</span><div style="margin:10px 0">${p.tags.map(t=>`<span style="background:#f1e5d9;border-radius:20px;padding:5px 8px;font-size:11px;margin-right:4px">${t}</span>`).join("")}</div><p>A partir de <b>R$ ${p.price}</b></p><a class="btn btn-dark" href="#/perfil">Ver perfil</a></article>`}
 function search(){return `${header()}<main class="page"><div class="container"><div class="crumb">Início › Buscar trancistas</div><h1>Encontre sua trancista no Rio de Janeiro</h1><p class="muted">Profissionais para todos os estilos, em todos os cantos da cidade.</p><div class="panel" style="display:grid;grid-template-columns:1fr 1fr 1fr auto;gap:8px;margin:25px 0"><input class="panel" placeholder="Qual técnica?"><input class="panel" placeholder="Onde?"><input class="panel" placeholder="Quando?"><button class="btn btn-primary">Buscar</button></div><div style="display:grid;grid-template-columns:220px 1fr;gap:18px"><aside class="panel"><b>Filtros</b><hr>${["Localização","Técnica","Faixa de preço","Disponibilidade","Avaliação"].map(x=>`<p><b>${x}</b></p><label><input type="checkbox"> Opções</label>`).join("")}</aside><section><div style="display:flex;justify-content:space-between;margin-bottom:12px"><b>126 trancistas encontradas</b><select><option>Mais relevantes</option></select></div><div style="display:grid;grid-template-columns:repeat(2,1fr);gap:14px">${professionals.map(proCard).join("")}</div></section></div></div></main>`}
 function profile(){return `${header()}<section class="profile-hero"><div class="container"><div class="crumb">Início › Buscar › Jéssica Santos</div><div class="profile-intro"><div class="profile-photo-real"></div><div class="profile-info"><span class="verified">● Perfil verificado</span><h1>Jéssica Santos</h1><p>Especialista em Box Braids, Knotless e Nagô, com atendimento em Madureira, Rio de Janeiro.</p><div>⌖ Madureira, RJ</div><div style="margin-top:8px">★ 4,9 <span style="color:#cbb6a9">(127 avaliações)</span></div><div class="profile-stats"><div><strong>6 anos</strong><span>de experiência</span></div><div><strong>1h</strong><span>tempo de resposta</span></div><div><strong>98%</strong><span>comparecimento</span></div></div></div><div class="booking-card"><span class="muted">A partir de</span><div class="price-big">R$ 280</div><p class="muted">Próximo horário: <b>18/09 às 13h</b></p><a class="btn btn-primary" href="#/agendamento">Agendar horário</a><button class="btn btn-light" style="margin-top:8px" onclick="toast('Adicionado aos favoritos')">♡ Favoritar</button></div></div></div></section><section class="profile-main"><div class="container profile-content"><div><h2>Portfólio</h2><p class="muted">Trabalhos recentes de Jéssica.</p><div class="portfolio-large">${[1,2,3,4,5,6].map(i=>`<div class="work"></div>`).join("")}</div><div style="margin-top:50px"><h2>Serviços</h2><div class="service-list">${[["Box Braids","R$ 280","5 horas"],["Knotless","R$ 350","6 horas"],["Nagô","R$ 180","3 horas"],["Fulani","R$ 320","5 horas"]].map(x=>`<div class="service-row"><div><b>${x[0]}</b><br><small>${x[2]}</small></div><div><b>${x[1]}</b><br><a class="orange" href="#/agendamento">Agendar →</a></div></div>`).join("")}</div></div><div style="margin-top:50px"><h2>Avaliações</h2><div class="review"><b>★★★★★ 5,0</b><p>O resultado ficou exatamente como eu queria. Atendimento organizado e pontual.</p><small class="muted">Cliente verificada · atendimento realizado</small></div></div></div><aside class="sticky-panel"><div class="panel"><h3>Sobre o atendimento</h3><div class="list-row">Local <b>Madureira, RJ</b></div><div class="list-row">Atendimento <b>Estúdio</b></div><div class="list-row">Material <b>Incluso</b></div><div class="list-row">Pagamento <b>Pix ou cartão</b></div><a class="btn btn-primary" style="display:block;text-align:center;margin-top:15px" href="#/agendamento">Escolher horário</a></div></aside></div></section>`}

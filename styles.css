@@ -903,3 +903,44 @@
     height: 440px;
   }
 }
+/* AJUSTE FINO — HOME */
+
+.home-page .hero-content {
+  padding-top: 115px;
+}
+
+.home-page .hero-copy h1 {
+  font-size: clamp(58px, 5.2vw, 80px);
+  max-width: 700px;
+}
+
+.home-page .hero-copy > p {
+  font-size: 16px;
+  max-width: 570px;
+  margin-top: 24px;
+  margin-bottom: 32px;
+}
+
+.home-page .home-search {
+  max-width: 720px;
+}
+
+.home-page .hero-benefits {
+  max-width: 720px;
+  margin-top: 32px;
+  gap: 25px;
+}
+
+.home-page .benefit {
+  font-size: 11px;
+}
+
+.home-page .benefit-icon {
+  width: 28px;
+  height: 28px;
+}
+
+.home-page .hero-image img {
+  object-position: 68% center;
+  transform: scale(1.04);
+}

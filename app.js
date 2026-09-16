@@ -7,86 +7,147 @@ const professionals=[
 ];
 function header(){return `<header class="topbar"><div class="container nav"><a class="logo" href="#/"><span class="logo-mark"></span><span class="brand-word">TRAMA<small class="brand-sub">BELEZA QUE CONECTA</small></span></a><nav class="navlinks"><a href="#/buscar">Buscar trancistas</a><a href="#/como-funciona">Como funciona</a><a href="#/trancistas">Para trancistas</a><a href="#/conteudos">Conteúdos</a></nav><div class="navactions"><button class="btn btn-outline" onclick="toast('Login demonstrativo')">Entrar</button><a class="btn btn-primary" href="#/cadastro">Criar conta</a></div></div></header>`}
 function home(){
-const hs=[
-[31,2,11,5,"#/como-funciona"],
-[49,2,9,5,"#/trancistas"],
-[59,2,8,5,"#/conteudos"],
-[79,2,5,5,"javascript:toast('Login demonstrativo')"],
-[85,2,9,5,"#/cadastro"],
-[8,73,17,19,"#/buscar"],
-[28,73,17,19,"#/buscar"],
-[51,73,17,19,"#/buscar"],
-[72,73,18,19,"#/buscar"]
-];
-
 return `
-<main class="exact-home">
-  <div class="home-canvas">
+${header()}
 
-    <img src="approved-home.png" alt="Home aprovada da plataforma TRAMA">
+<main class="home-page">
 
-    ${hs.map(([x,y,w,h,target]) =>
-      `<a
-        class="hotspot"
-        style="left:${x}%;top:${y}%;width:${w}%;height:${h}%"
-        href="${target.startsWith('javascript:')?'#':target}"
-        onclick="${target.startsWith('javascript:')?target.slice(11):''}">
-      </a>`
-    ).join("")}
+  <section class="hero">
 
-    <form
-      class="home-search"
-      onsubmit="event.preventDefault(); buscarHome();">
+    <div class="hero-content">
 
-      <div class="home-search-field technique-field">
-        <span class="search-icon">⌕</span>
-        <div>
-          <label for="home-technique">Qual técnica você procura?</label>
-          <input
-            id="home-technique"
-            type="text"
-            placeholder="Ex: Box Braids, Knotless, Nagô..."
-            autocomplete="off">
+      <div class="hero-copy">
+
+        <h1>
+          <span>Sua beleza</span>
+          <strong>com mais <em>Trama</em></strong>
+        </h1>
+
+        <p>
+          Encontre trancistas de confiança, descubra novos estilos
+          e agende seu horário de forma simples e segura.
+        </p>
+
+        <form class="hero-search" onsubmit="event.preventDefault(); buscarHome();">
+
+          <div class="search-field">
+            <span class="search-field-icon">⌕</span>
+
+            <div class="search-field-content">
+              <label for="home-technique">
+                Qual técnica você procura?
+              </label>
+
+              <input
+                id="home-technique"
+                type="text"
+                placeholder="Ex: Box Braids, Knotless, Nagô..."
+                autocomplete="off"
+              >
+            </div>
+          </div>
+
+
+          <div class="search-field">
+            <span class="search-field-icon">⌖</span>
+
+            <div class="search-field-content">
+              <label for="home-location">
+                Onde?
+              </label>
+
+              <input
+                id="home-location"
+                type="text"
+                placeholder="Rio de Janeiro, bairro ou região"
+                autocomplete="off"
+              >
+            </div>
+          </div>
+
+
+          <button type="submit" class="search-button">
+            Buscar
+          </button>
+
+        </form>
+
+
+        <div class="hero-benefits">
+
+          <div class="benefit">
+            <span class="benefit-icon">○</span>
+            <span>
+              <b>Trancistas</b>
+              verificadas
+            </span>
+          </div>
+
+          <div class="benefit">
+            <span class="benefit-icon">□</span>
+            <span>
+              <b>Agendamento</b>
+              online
+            </span>
+          </div>
+
+          <div class="benefit">
+            <span class="benefit-icon">♢</span>
+            <span>
+              <b>Mais segurança</b>
+              para você
+            </span>
+          </div>
+
+          <div class="benefit">
+            <span class="benefit-icon">♡</span>
+            <span>
+              <b>Beleza que</b>
+              fortalece histórias
+            </span>
+          </div>
+
         </div>
+
       </div>
 
-      <div class="home-search-field location-field">
-        <span class="location-icon">⌖</span>
-        <div>
-          <label for="home-location">Onde?</label>
-          <input
-            id="home-location"
-            type="text"
-            placeholder="Rio de Janeiro, bairro ou região"
-            autocomplete="off">
-        </div>
-      </div>
+    </div>
 
-      <button type="submit" class="home-search-button">
-        Buscar
-      </button>
 
-    </form>
+    <div class="hero-image">
+      <img
+        src="hero-woman.png"
+        alt="Mulher usando tranças"
+      >
+    </div>
 
-  </div>
+  </section>
 
-  <div class="home-note">
-    Protótipo navegável — esta Home reproduz exatamente a referência visual aprovada.
-    Os pontos interativos levam às telas funcionais do protótipo.
-  </div>
-</main>`;
+</main>
+`;
 }
 
 function buscarHome(){
-  const technique = document.getElementById("home-technique").value.trim();
-  const location = document.getElementById("home-location").value.trim();
+
+  const technique =
+    document.getElementById("home-technique")?.value.trim() || "";
+
+  const locationValue =
+    document.getElementById("home-location")?.value.trim() || "";
 
   const params = new URLSearchParams();
 
-  if(technique) params.set("tecnica", technique);
-  if(location) params.set("local", location);
+  if(technique){
+    params.set("tecnica", technique);
+  }
 
-  location.hash = "/buscar" + (params.toString() ? "?" + params.toString() : "");
+  if(locationValue){
+    params.set("local", locationValue);
+  }
+
+  location.hash =
+    "/buscar" +
+    (params.toString() ? "?" + params.toString() : "");
 }
 function proCard(p){return `<article class="panel"><div style="height:160px;border-radius:12px;background:linear-gradient(135deg,#6b351e,#d47c3d);margin:-2px -2px 14px"></div><h3>${p.name} <span class="verified">●</span></h3><div class="muted">${p.place}</div><b>★ ${p.rating}</b> <span class="muted">(${p.reviews})</span><div style="margin:10px 0">${p.tags.map(t=>`<span style="background:#f1e5d9;border-radius:20px;padding:5px 8px;font-size:11px;margin-right:4px">${t}</span>`).join("")}</div><p>A partir de <b>R$ ${p.price}</b></p><a class="btn btn-dark" href="#/perfil">Ver perfil</a></article>`}
 function search(){return `${header()}<main class="page"><div class="container"><div class="crumb">Início › Buscar trancistas</div><h1>Encontre sua trancista no Rio de Janeiro</h1><p class="muted">Profissionais para todos os estilos, em todos os cantos da cidade.</p><div class="panel" style="display:grid;grid-template-columns:1fr 1fr 1fr auto;gap:8px;margin:25px 0"><input class="panel" placeholder="Qual técnica?"><input class="panel" placeholder="Onde?"><input class="panel" placeholder="Quando?"><button class="btn btn-primary">Buscar</button></div><div style="display:grid;grid-template-columns:220px 1fr;gap:18px"><aside class="panel"><b>Filtros</b><hr>${["Localização","Técnica","Faixa de preço","Disponibilidade","Avaliação"].map(x=>`<p><b>${x}</b></p><label><input type="checkbox"> Opções</label>`).join("")}</aside><section><div style="display:flex;justify-content:space-between;margin-bottom:12px"><b>126 trancistas encontradas</b><select><option>Mais relevantes</option></select></div><div style="display:grid;grid-template-columns:repeat(2,1fr);gap:14px">${professionals.map(proCard).join("")}</div></section></div></div></main>`}

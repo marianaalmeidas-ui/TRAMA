@@ -19,3 +19,98 @@
 .footer{background:#211009;color:#d9c5b8;padding:45px 0}.footergrid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:30px}.footer a{display:block;margin:8px 0;font-size:14px}.footer h3{color:#fff;font-size:20px}
 @media(max-width:900px){.navlinks{display:none}.navactions .btn-outline{display:none}.profile-intro{grid-template-columns:230px 1fr}.booking-card{grid-column:1/-1}.profile-content{grid-template-columns:1fr}.sticky-panel{position:static}.dashboard{grid-template-columns:1fr}.side{display:none}.stat-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:600px){.container{width:calc(100% - 28px)}h1{font-size:39px}.home-note{font-size:11px}.profile-intro{grid-template-columns:1fr}.profile-photo-real{height:320px}.portfolio-large{grid-template-columns:1fr 1fr}.booking-layout{grid-template-columns:1fr}.stat-grid{grid-template-columns:1fr 1fr}.dashmain{padding:22px 15px}}
+.home-search{
+  position:absolute;
+  left:7%;
+  top:41%;
+  width:86%;
+  height:7%;
+  display:grid;
+  grid-template-columns: 1.05fr 0.9fr 0.5fr;
+  gap:8px;
+  z-index:20;
+}
+
+.home-search-field{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  padding:0 18px;
+  background:transparent;
+  border-radius:12px;
+  box-sizing:border-box;
+}
+
+.home-search-field > div{
+  display:flex;
+  flex-direction:column;
+  min-width:0;
+  width:100%;
+}
+
+.home-search-field label{
+  font-family:Arial,sans-serif;
+  font-size:16px;
+  line-height:1.2;
+  color:#3b2a20;
+  margin-bottom:4px;
+}
+
+.home-search-field input{
+  width:100%;
+  border:0;
+  outline:0;
+  background:transparent;
+  font-family:Arial,sans-serif;
+  font-size:14px;
+  color:#3b2a20;
+  padding:0;
+}
+
+.home-search-field input::placeholder{
+  color:#8d8179;
+  opacity:1;
+}
+
+.search-icon,
+.location-icon{
+  font-family:Arial,sans-serif;
+  font-size:31px;
+  line-height:1;
+  color:#241811;
+  flex-shrink:0;
+}
+
+.home-search-button{
+  border:0;
+  border-radius:12px;
+  background:#e86f2c;
+  color:#17100c;
+  font-family:Arial,sans-serif;
+  font-size:18px;
+  font-weight:700;
+  cursor:pointer;
+  transition:transform .15s ease, opacity .15s ease;
+}
+
+.home-search-button:hover{
+  transform:translateY(-1px);
+  opacity:.92;
+}
+
+@media(max-width:800px){
+  .home-search{
+    height:auto;
+    top:38%;
+    grid-template-columns:1fr;
+    gap:6px;
+  }
+
+  .home-search-field{
+    min-height:48px;
+  }
+
+  .home-search-button{
+    min-height:48px;
+  }
+}

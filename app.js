@@ -12,28 +12,164 @@ return `<header class="topbar"><div class="container nav"><a class="logo" href="
 }
 
 function home(){
-const w=100/1536,h=100/1024;
+  return `
+  ${header()}
 
-const hs=[
-[7,2,17,5,"#/buscar"],
-[31,2,11,5,"#/como-funciona"],
-[49,2,9,5,"#/trancistas"],
-[59,2,8,5,"#/conteudos"],
-[79,2,5,5,"javascript:toast('Login demonstrativo')"],
-[85,2,9,5,"#/cadastro"],
-[7,41,24,7,"#/buscar"],
-[29,41,15,7,"#/buscar"],
-[45,41,9,7,"#/buscar"],
-[72,51,14,6,"javascript:toast('Busca por imagem: funcionalidade demonstrativa')"],
-[8,73,17,19,"#/buscar"],
-[28,73,17,19,"#/buscar"],
-[51,73,17,19,"#/buscar"],
-[72,73,18,19,"#/buscar"]
-];
+  <main class="home-page">
 
-return `<main class="exact-home"><div class="home-canvas"><img src="approved-home.png" alt="Home aprovada da plataforma TRAMA">${hs.map(([x,y,w1,h1,target])=>`<a class="hotspot" style="left:${x}%;top:${y}%;width:${w1}%;height:${h1}%" href="${target.startsWith('javascript:')?'#':target}" onclick="${target.startsWith('javascript:')?target.slice(11):''}"></a>`).join("")}</div><div class="home-note">Protótipo navegável — esta Home reproduz exatamente a referência visual aprovada. Os pontos interativos levam às telas funcionais do protótipo.</div></main>`
+    <section class="hero">
+
+      <div class="hero-content">
+
+        <div class="hero-copy">
+
+          <h1>
+            <span>Sua beleza</span>
+            <strong>com mais <em>Trama</em></strong>
+          </h1>
+
+          <p>
+            Encontre trancistas de confiança, descubra novos estilos
+            e agende seu horário de forma simples e segura.
+          </p>
+
+          <form
+            class="home-search"
+            onsubmit="event.preventDefault(); buscarHome();"
+          >
+
+            <div class="search-field">
+
+              <span class="search-field-icon">⌕</span>
+
+              <div class="search-field-content">
+
+                <label for="home-technique">
+                  Qual técnica você procura?
+                </label>
+
+                <input
+                  id="home-technique"
+                  type="text"
+                  placeholder="Ex: Box Braids, Knotless, Nagô..."
+                  autocomplete="off"
+                >
+
+              </div>
+
+            </div>
+
+
+            <div class="search-field">
+
+              <span class="search-field-icon">⌖</span>
+
+              <div class="search-field-content">
+
+                <label for="home-location">
+                  Onde?
+                </label>
+
+                <input
+                  id="home-location"
+                  type="text"
+                  placeholder="Rio de Janeiro, bairro ou região"
+                  autocomplete="off"
+                >
+
+              </div>
+
+            </div>
+
+
+            <button
+              type="submit"
+              class="search-button"
+            >
+              Buscar
+            </button>
+
+          </form>
+
+
+          <div class="hero-benefits">
+
+            <div class="benefit">
+              <span class="benefit-icon">○</span>
+              <span>
+                <b>Trancistas</b>
+                verificadas
+              </span>
+            </div>
+
+            <div class="benefit">
+              <span class="benefit-icon">□</span>
+              <span>
+                <b>Agendamento</b>
+                online
+              </span>
+            </div>
+
+            <div class="benefit">
+              <span class="benefit-icon">♢</span>
+              <span>
+                <b>Mais segurança</b>
+                para você
+              </span>
+            </div>
+
+            <div class="benefit">
+              <span class="benefit-icon">♡</span>
+              <span>
+                <b>Beleza que</b>
+                conecta
+              </span>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="hero-image">
+
+        <img
+          src="hero-woman.png"
+          alt="Mulher usando tranças"
+        >
+
+      </div>
+
+    </section>
+
+  </main>
+  `;
 }
 
+function buscarHome(){
+
+  const technique =
+    document.getElementById("home-technique")?.value.trim() || "";
+
+  const locationValue =
+    document.getElementById("home-location")?.value.trim() || "";
+
+  const params = new URLSearchParams();
+
+  if(technique){
+    params.set("tecnica", technique);
+  }
+
+  if(locationValue){
+    params.set("local", locationValue);
+  }
+
+  location.hash =
+    "/buscar" +
+    (params.toString() ? "?" + params.toString() : "");
+}
 function proCard(p){
 return `<article class="panel"><div style="height:160px;border-radius:12px;background:linear-gradient(135deg,#6b351e,#d47c3d);margin:-2px -2px 14px"></div><h3>${p.name} <span class="verified">●</span></h3><div class="muted">${p.place}</div><b>★ ${p.rating}</b> <span class="muted">(${p.reviews})</span><div style="margin:10px 0">${p.tags.map(t=>`<span style="background:#f1e5d9;border-radius:20px;padding:5px 8px;font-size:11px;margin-right:4px">${t}</span>`).join("")}</div><p>A partir de <b>R$ ${p.price}</b></p><a class="btn btn-dark" href="#/perfil">Ver perfil</a></article>`
 }

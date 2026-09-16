@@ -12,141 +12,95 @@ return `<header class="topbar"><div class="container nav"><a class="logo" href="
 }
 
 function home(){
-  return `
-  ${header()}
+return `
+${header()}
 
-  <main class="home-page">
+<main class="home-page">
 
-    <section class="hero">
+  <section class="hero">
 
-      <div class="hero-content">
+    <div class="hero-overlay">
 
-        <div class="hero-copy">
+      <div class="hero-copy">
 
-          <h1>
-            <span>Sua beleza</span>
-            <strong>com mais <em>Trama</em></strong>
-          </h1>
+        <h1>
+          <span>Sua beleza</span>
+          <strong>com mais <em>Trama</em></strong>
+        </h1>
 
-          <p>
-            Encontre trancistas de confiança, descubra novos estilos
-            e agende seu horário de forma simples e segura.
-          </p>
+        <p>
+          Encontre trancistas de confiança, descubra novos estilos
+          e agende seu horário de forma simples e segura.
+        </p>
 
-          <form
-            class="home-search"
-            onsubmit="event.preventDefault(); buscarHome();"
-          >
+        <form
+          class="home-search"
+          onsubmit="event.preventDefault(); buscarHome();"
+        >
 
-            <div class="search-field">
+          <div class="search-field">
 
-              <span class="search-field-icon">⌕</span>
+            <span class="search-field-icon">⌕</span>
 
-              <div class="search-field-content">
+            <div class="search-field-content">
 
-                <label for="home-technique">
-                  Qual técnica você procura?
-                </label>
+              <label for="home-technique">
+                Qual técnica você procura?
+              </label>
 
-                <input
-                  id="home-technique"
-                  type="text"
-                  placeholder="Ex: Box Braids, Knotless, Nagô..."
-                  autocomplete="off"
-                >
+              <input
+                id="home-technique"
+                type="text"
+                placeholder="Ex: Box Braids, Knotless, Nagô..."
+                autocomplete="off"
+              >
 
-              </div>
-
-            </div>
-
-
-            <div class="search-field">
-
-              <span class="search-field-icon">⌖</span>
-
-              <div class="search-field-content">
-
-                <label for="home-location">
-                  Onde?
-                </label>
-
-                <input
-                  id="home-location"
-                  type="text"
-                  placeholder="Rio de Janeiro, bairro ou região"
-                  autocomplete="off"
-                >
-
-              </div>
-
-            </div>
-
-
-            <button
-              type="submit"
-              class="search-button"
-            >
-              Buscar
-            </button>
-
-          </form>
-
-
-          <div class="hero-benefits">
-
-            <div class="benefit">
-              <span class="benefit-icon">○</span>
-              <span>
-                <b>Trancistas</b>
-                verificadas
-              </span>
-            </div>
-
-            <div class="benefit">
-              <span class="benefit-icon">□</span>
-              <span>
-                <b>Agendamento</b>
-                online
-              </span>
-            </div>
-
-            <div class="benefit">
-              <span class="benefit-icon">♢</span>
-              <span>
-                <b>Mais segurança</b>
-                para você
-              </span>
-            </div>
-
-            <div class="benefit">
-              <span class="benefit-icon">♡</span>
-              <span>
-                <b>Beleza que</b>
-                conecta
-              </span>
             </div>
 
           </div>
 
-        </div>
+
+          <div class="search-field">
+
+            <span class="search-field-icon">⌖</span>
+
+            <div class="search-field-content">
+
+              <label for="home-location">
+                Onde?
+              </label>
+
+              <input
+                id="home-location"
+                type="text"
+                placeholder="Rio de Janeiro, bairro ou região"
+                autocomplete="off"
+              >
+
+            </div>
+
+          </div>
+
+
+          <button
+            type="submit"
+            class="search-button"
+          >
+            Buscar
+          </button>
+
+        </form>
 
       </div>
 
+    </div>
 
-      <div class="hero-image">
+  </section>
 
-        <img
-          src="hero-woman.png"
-          alt="Mulher usando tranças"
-        >
-
-      </div>
-
-    </section>
-
-  </main>
-  `;
+</main>
+`;
 }
+
 
 function buscarHome(){
 

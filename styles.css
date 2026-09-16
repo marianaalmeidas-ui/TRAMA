@@ -114,3 +114,318 @@
     min-height:48px;
   }
 }
+/* =========================================================
+   TRAMA — NOVA HOME
+   Interface construída em HTML/CSS
+   ========================================================= */
+
+.home-page {
+  background: #32180d;
+  min-height: calc(100vh - 78px);
+  overflow: hidden;
+}
+
+.home-page .hero {
+  position: relative;
+  min-height: calc(100vh - 78px);
+  display: grid;
+  grid-template-columns: 54% 46%;
+  background: #32180d;
+}
+
+/* CONTEÚDO ESQUERDO */
+
+.home-page .hero-content {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  padding: 70px 5vw 80px 7vw;
+  box-sizing: border-box;
+}
+
+.home-page .hero-copy {
+  width: 100%;
+  max-width: 760px;
+}
+
+.home-page .hero-copy h1 {
+  margin: 0;
+  color: #f7f0e7;
+  font-family: "DM Serif Display", Georgia, serif;
+  font-size: clamp(52px, 5.2vw, 86px);
+  font-weight: 400;
+  line-height: .94;
+  letter-spacing: -2px;
+}
+
+.home-page .hero-copy h1 span,
+.home-page .hero-copy h1 strong {
+  display: block;
+}
+
+.home-page .hero-copy h1 strong {
+  font-weight: 400;
+}
+
+.home-page .hero-copy h1 em {
+  color: #ef7025;
+  font-style: normal;
+}
+
+.home-page .hero-copy > p {
+  max-width: 570px;
+  margin: 28px 0 34px;
+  color: #eaded3;
+  font-family: "Manrope", Arial, sans-serif;
+  font-size: 17px;
+  line-height: 1.6;
+}
+
+
+/* BUSCA */
+
+.home-search {
+  width: 100%;
+  max-width: 720px;
+  display: grid;
+  grid-template-columns: 1.15fr 1fr 150px;
+  background: #f7f0e7;
+  border-radius: 14px;
+  padding: 7px;
+  box-sizing: border-box;
+  box-shadow: 0 14px 35px rgba(0,0,0,.18);
+}
+
+.search-field {
+  min-height: 72px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 18px;
+  box-sizing: border-box;
+  border-right: 1px solid #d9cbc0;
+}
+
+.search-field-icon {
+  flex-shrink: 0;
+  font-family: Arial, sans-serif;
+  font-size: 28px;
+  line-height: 1;
+  color: #32180d;
+}
+
+.search-field-content {
+  min-width: 0;
+  width: 100%;
+}
+
+.search-field-content label {
+  display: block;
+  margin-bottom: 7px;
+  color: #32180d;
+  font-family: "Manrope", Arial, sans-serif;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.search-field-content input {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  outline: none;
+  background: transparent;
+  color: #32180d;
+  font-family: "Manrope", Arial, sans-serif;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+.search-field-content input::placeholder {
+  color: #8d7b70;
+  opacity: 1;
+}
+
+.search-button {
+  min-height: 72px;
+  border: 0;
+  border-radius: 10px;
+  background: #ef7025;
+  color: #32180d;
+  font-family: "Manrope", Arial, sans-serif;
+  font-size: 15px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: transform .15s ease, opacity .15s ease;
+}
+
+.search-button:hover {
+  transform: translateY(-1px);
+  opacity: .92;
+}
+
+
+/* BENEFÍCIOS */
+
+.hero-benefits {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 22px;
+  max-width: 720px;
+  margin-top: 38px;
+}
+
+.benefit {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  color: #d9c9bd;
+  font-family: "Manrope", Arial, sans-serif;
+  font-size: 11px;
+  line-height: 1.35;
+}
+
+.benefit b {
+  display: block;
+  color: #f7f0e7;
+  font-weight: 800;
+}
+
+.benefit-icon {
+  width: 27px;
+  height: 27px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #8e6b58;
+  border-radius: 50%;
+  color: #ef7025;
+  font-size: 15px;
+}
+
+
+/* IMAGEM */
+
+.home-page .hero-image {
+  position: relative;
+  min-height: 100%;
+  overflow: hidden;
+  background: #a85228;
+}
+
+.home-page .hero-image::before {
+  content: "";
+  position: absolute;
+  left: -90px;
+  top: 0;
+  width: 180px;
+  height: 100%;
+  background: #32180d;
+  clip-path: polygon(0 0, 100% 0, 35% 100%, 0 100%);
+  z-index: 2;
+}
+
+.home-page .hero-image img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+}
+
+
+/* TOPO */
+
+.home-page ~ * {
+  box-sizing: border-box;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 1100px) {
+
+  .home-page .hero {
+    grid-template-columns: 1fr;
+    min-height: auto;
+  }
+
+  .home-page .hero-content {
+    min-height: auto;
+    padding: 70px 7vw 55px;
+  }
+
+  .home-page .hero-copy {
+    max-width: 800px;
+  }
+
+  .home-page .hero-image {
+    height: 520px;
+    min-height: 520px;
+  }
+
+  .home-page .hero-image::before {
+    display: none;
+  }
+
+  .hero-benefits {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+
+@media (max-width: 700px) {
+
+  .home-page .hero-content {
+    padding: 50px 22px 40px;
+  }
+
+  .home-page .hero-copy h1 {
+    font-size: 52px;
+    letter-spacing: -1px;
+  }
+
+  .home-page .hero-copy > p {
+    font-size: 15px;
+  }
+
+  .home-search {
+    grid-template-columns: 1fr;
+    gap: 5px;
+    padding: 7px;
+  }
+
+  .search-field {
+    border-right: 0;
+    border-bottom: 1px solid #d9cbc0;
+  }
+
+  .search-button {
+    min-height: 58px;
+  }
+
+  .hero-benefits {
+    grid-template-columns: 1fr 1fr;
+    gap: 18px 12px;
+  }
+
+  .home-page .hero-image {
+    height: 420px;
+    min-height: 420px;
+  }
+}
+
+
+@media (max-width: 430px) {
+
+  .home-page .hero-copy h1 {
+    font-size: 43px;
+  }
+
+  .hero-benefits {
+    grid-template-columns: 1fr;
+  }
+}

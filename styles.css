@@ -534,3 +534,372 @@
   left: -65px;
   width: 130px;
 }
+/* =========================================================
+   TRAMA — CORREÇÃO FINAL DE COMPOSIÇÃO DA HOME
+   ========================================================= */
+
+/* HERO */
+
+.home-page .hero {
+  position: relative;
+  display: grid;
+  grid-template-columns: 53% 47%;
+  width: 100%;
+  min-height: calc(100vh - 59px);
+  overflow: hidden;
+  background: #32180d;
+}
+
+
+/* ÁREA DO CONTEÚDO */
+
+.home-page .hero-content {
+  position: relative;
+  z-index: 5;
+  display: flex;
+  align-items: flex-start;
+  padding: 145px 45px 70px 6vw;
+  box-sizing: border-box;
+}
+
+.home-page .hero-copy {
+  width: 100%;
+  max-width: 700px;
+}
+
+
+/* TÍTULO */
+
+.home-page .hero-copy h1 {
+  position: relative;
+  z-index: 6;
+  margin: 0;
+  max-width: 650px;
+  color: #f7f0e7;
+  font-family: "DM Serif Display", Georgia, serif;
+  font-size: clamp(55px, 5vw, 76px);
+  font-weight: 400;
+  line-height: .95;
+  letter-spacing: -1.5px;
+}
+
+.home-page .hero-copy h1 span,
+.home-page .hero-copy h1 strong {
+  display: block;
+}
+
+.home-page .hero-copy h1 strong {
+  font-weight: 400;
+}
+
+.home-page .hero-copy h1 em {
+  color: #ef7025;
+  font-style: normal;
+}
+
+
+/* TEXTO */
+
+.home-page .hero-copy > p {
+  position: relative;
+  z-index: 6;
+  max-width: 570px;
+  margin: 26px 0 30px;
+  color: #eaded3;
+  font-family: "Manrope", Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.55;
+}
+
+
+/* =========================================================
+   BUSCA
+   IMPORTANTE: position:relative elimina o comportamento
+   antigo que estava fazendo a busca sobrepor o título.
+   ========================================================= */
+
+.home-page .home-search {
+  position: relative;
+  z-index: 10;
+
+  display: grid;
+
+  width: 100%;
+  max-width: 690px;
+
+  grid-template-columns: 1.18fr 1fr 125px;
+
+  margin: 0;
+
+  padding: 6px;
+
+  background: #f7f0e7;
+  border-radius: 13px;
+
+  box-sizing: border-box;
+
+  box-shadow: 0 12px 30px rgba(0,0,0,.18);
+}
+
+
+/* CAMPOS */
+
+.home-page .search-field {
+  position: relative;
+
+  min-height: 66px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 11px;
+
+  padding: 9px 16px;
+
+  box-sizing: border-box;
+
+  border-right: 1px solid #d9cbc0;
+}
+
+.home-page .search-field-icon {
+  flex-shrink: 0;
+
+  color: #32180d;
+
+  font-family: Arial, sans-serif;
+  font-size: 28px;
+  line-height: 1;
+}
+
+.home-page .search-field-content {
+  width: 100%;
+  min-width: 0;
+}
+
+.home-page .search-field-content label {
+  display: block;
+
+  margin-bottom: 5px;
+
+  color: #32180d;
+
+  font-family: "Manrope", Arial, sans-serif;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.home-page .search-field-content input {
+  display: block;
+
+  width: 100%;
+
+  margin: 0;
+  padding: 0;
+
+  border: 0;
+  outline: 0;
+
+  background: transparent;
+
+  color: #32180d;
+
+  font-family: "Manrope", Arial, sans-serif;
+  font-size: 13px;
+
+  box-sizing: border-box;
+}
+
+.home-page .search-field-content input::placeholder {
+  color: #8d7b70;
+  opacity: 1;
+}
+
+
+/* BOTÃO */
+
+.home-page .search-button {
+  min-height: 66px;
+
+  border: 0;
+  border-radius: 10px;
+
+  background: #ef7025;
+
+  color: #32180d;
+
+  font-family: "Manrope", Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 800;
+
+  cursor: pointer;
+}
+
+
+/* =========================================================
+   BENEFÍCIOS
+   ========================================================= */
+
+.home-page .hero-benefits {
+  position: relative;
+  z-index: 5;
+
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+
+  width: 100%;
+  max-width: 690px;
+
+  gap: 18px;
+
+  margin-top: 29px;
+}
+
+.home-page .benefit {
+  display: flex;
+  align-items: center;
+
+  gap: 8px;
+
+  color: #d9c9bd;
+
+  font-family: "Manrope", Arial, sans-serif;
+  font-size: 10px;
+  line-height: 1.35;
+}
+
+.home-page .benefit b {
+  display: block;
+
+  color: #f7f0e7;
+
+  font-weight: 800;
+}
+
+.home-page .benefit-icon {
+  width: 25px;
+  height: 25px;
+
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid #ef7025;
+  border-radius: 50%;
+
+  color: #ef7025;
+
+  font-size: 13px;
+}
+
+
+/* =========================================================
+   IMAGEM DA MULHER
+   ========================================================= */
+
+.home-page .hero-image {
+  position: relative;
+
+  width: 100%;
+  height: calc(100vh - 59px);
+
+  overflow: hidden;
+
+  background: #8d4324;
+}
+
+.home-page .hero-image::before {
+  content: "";
+
+  position: absolute;
+
+  left: -75px;
+  top: 0;
+
+  width: 150px;
+  height: 100%;
+
+  background: #32180d;
+
+  clip-path: polygon(
+    0 0,
+    100% 0,
+    48% 100%,
+    0 100%
+  );
+
+  z-index: 3;
+}
+
+.home-page .hero-image img {
+  position: absolute;
+
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  object-position: 63% center;
+
+  transform: scale(1.02);
+}
+
+
+/* =========================================================
+   RESPONSIVO
+   ========================================================= */
+
+@media (max-width: 1100px) {
+
+  .home-page .hero {
+    grid-template-columns: 1fr;
+  }
+
+  .home-page .hero-content {
+    padding: 100px 7vw 55px;
+  }
+
+  .home-page .hero-image {
+    height: 560px;
+  }
+
+  .home-page .hero-image::before {
+    display: none;
+  }
+}
+
+
+@media (max-width: 700px) {
+
+  .home-page .hero-content {
+    padding: 70px 22px 45px;
+  }
+
+  .home-page .hero-copy h1 {
+    font-size: 48px;
+  }
+
+  .home-page .home-search {
+    grid-template-columns: 1fr;
+  }
+
+  .home-page .search-field {
+    border-right: 0;
+    border-bottom: 1px solid #d9cbc0;
+  }
+
+  .home-page .search-button {
+    min-height: 58px;
+  }
+
+  .home-page .hero-benefits {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .home-page .hero-image {
+    height: 440px;
+  }
+}
